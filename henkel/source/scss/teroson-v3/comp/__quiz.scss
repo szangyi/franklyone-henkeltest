@@ -1,0 +1,114 @@
+
+@use "../base/config" as *;
+
+//	–––––––––––––––––––––––––––––––––––––––––––––––––––––––
+//	Quiz
+//	–––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+@mixin quiz {
+
+
+	// SHOULD STAY IN THE QUIZ
+
+	/* if card is datacorrect true, the nested false response should be hidden */
+	[data-correct="true"] [data-correct="false"],
+	[data-correct="false"] [data-correct="true"] {
+		display: none;
+		pointer-events: none;
+	}
+
+	/* if card has no datacorrect button is disabled */
+	// .card.regular:not([data-correct]) button {
+	// 	pointer-events: none;
+	// 	background: #eeeeee;
+	// 	color: #999999;
+	// }
+
+	.slide-in-image.discarded {
+		display: none !important;
+	}
+
+	/* ----- */
+	/* Swipe */
+	/* ----- */
+
+	/* if card is datacorrect true, the following swipeanswer should be hidden */
+	.swipe[data-correct="true"]+.swipe-answer div[data-correct="false"],
+	.swipe[data-correct="false"]+.swipe-answer div[data-correct="true"] {
+		display: none;
+		pointer-events: none;
+	}
+
+	.overlay {
+		background: rgba(0, 0, 0, 0.95);
+		width: 300vw;
+		height: 300vh;
+		margin-left: -100vw;
+		margin-top: -100vh;
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		transition: 0.4s;
+		opacity: 0;
+	}
+
+	.card.swipe.discarded+.swipe-answer .overlay {
+		opacity: 1;
+	}
+
+	.bubble {
+		background-color: color('brand');
+		color:  color('white');
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: 1em;
+		width: 4em;
+		height: 4em;
+		line-height: 2em;
+		/* --opacity: calc(var(--swipe-pct) * 2); */
+		opacity: var(--opacity, 0);
+
+		z-index: 99;
+	}
+
+	[data-direction="left"] .bubble {
+		background-color: black;
+	}
+
+	[data-direction="left"] .bubble::before {
+		content: "NO";
+	}
+
+	[data-direction="right"] .bubble {
+		background-color:  color('brand');
+	}
+
+	[data-direction="right"] .bubble::before {
+		content: "YES";
+	}
+
+	.card:not(.discarded)+.card {
+		transform: translateY(4%) scale(0.96);
+	}
+
+	.card:not(.discarded)+.card+.card {
+		transform: translateY(8%) scale(0.92);
+	}
+
+
+	@media (min-width: 55rem) {
+		.noevent {
+			pointer-events: none;
+		}
+
+		.card.active button,
+		.card.discarded+.card button {
+			pointer-events: all;
+		}
+	}
+}

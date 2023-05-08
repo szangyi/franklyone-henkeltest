@@ -1,0 +1,47 @@
+// -----------------------------------------------------------------------------
+// Assemble
+// -----------------------------------------------------------------------------
+
+// Imports
+@use './config';
+@use '../base';
+@use '../comp';
+
+
+
+
+// Assemble
+@version(1.1.5);
+
+@include base.reset;
+
+@include base.layout-base;
+@include base.layout-grid;
+@include base.layout-hidden;
+@include base.typography;
+@include base.theme;
+
+// @include component.button;
+@include comp.embed;
+@include comp.embed--background;
+@include comp.embed--foreground;
+@include comp.embed--wallpaper;
+
+
+@include comp.kicker;
+
+@include comp.input-check;
+@include comp.input-check--rounded;
+@include comp.input-radio;
+// @include comp.input-text;
+// @include comp.input-radio;
+// @include comp.input-select;
+// @include comp.input-button;
+// @include comp.input-textarea;
+// @include comp.input-range;
+// @include component.card;
+// @include component.inputfield;
+
+
+
+

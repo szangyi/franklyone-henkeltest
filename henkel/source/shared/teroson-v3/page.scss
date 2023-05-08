@@ -1,0 +1,87 @@
+// -----------------------------------------------------------------------------
+// Page CSS Assemble 
+// 
+// compiles page.css to folder:  source > shared > v3 
+// -----------------------------------------------------------------------------
+
+// Imports
+@use './config';
+@use '../base';
+@use '../comp';
+
+
+
+// -----------------------------------------------------------------------------
+// Assemble
+// 1 MAJOR version when you make incompatible API changes
+// 2 MINOR version when you add functionality in a backwards compatible manner
+// 3 PATCH version when you make backwards compatible bug fixes
+// -----------------------------------------------------------------------------
+@version(1.5.1);
+
+@include base.reset;
+
+@include base.layout-base;
+@include base.layout-grid;
+@include base.layout-flex;
+@include base.layout-box-padding;
+@include base.layout-box-margin;
+@include base.layout-hidden;
+@include base.layout-debug;
+
+@include base.typography;
+@include base.theme;
+
+@include comp.button;
+@include comp.button--rounded;
+@include comp.button--pill;
+@include comp.button--full;
+
+@include comp.card;
+
+@include comp.embed;
+@include comp.embed--background;
+@include comp.embed--foreground;
+@include comp.embed--wallpaper;
+
+@include comp.icon;
+@include comp.icon--sizes;
+@include comp.icon--white;
+@include comp.icon--red;
+@include comp.icon--arrow;
+@include comp.icon--arrow-long;
+@include comp.icon--stroke;
+@include comp.icon--close;
+@include comp.icon--video;
+
+@include comp.input-check;
+@include comp.input-check--rounded;
+@include comp.input-radio;
+
+@include comp.kicker;
+
+@include comp.speechbubble;
+
+
+
+
+// -----------------------------------------------------------------------------
+// Change log (add to top)
+// -----------------------------------------------------------------------------
+// 1.5.1	changed kicker's size to fixed size and removed display inline-block
+// 1.5.0	added icon component
+// 1.4.3	changed box logic to use default value rather than 0rem
+// 1.4.2	changed button filter logic to handle breakpoints 
+// 1.4.1	changed color logic to use default color rather than inherit 
+// 1.4.0	added button component
+// 1.3.11	changed auto color to target individual breakpoints
+// 1.3.10	removed unnecessary equal selector on create component variations 
+// 1.3.9	update flex col/col-reverse selector 
+// 1.3.8	workaround safari issue on background color fallbacks
+// 1.3.7    ... 
+
+
+
+
+
+

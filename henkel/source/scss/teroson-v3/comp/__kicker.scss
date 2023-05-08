@@ -1,0 +1,39 @@
+// -----------------------------------------------------------------------------
+// Kicker Component
+// -----------------------------------------------------------------------------
+@use '../frankly/font';
+@use '../frankly/theme';
+@use '../frankly/comp';
+
+
+@mixin kicker {
+    @include comp.create('kicker') {
+
+        @at-root :where(&) { 
+            // default values 
+            --font-size: var(--font-size-text-xl);
+            --font-weight: var(--font-weight-extra-bold);
+            --font-transform: var(--font-transform-uppercase);
+            --color-text: var(--color-brand);
+        }
+
+        color: var(--🎨-color-text); 
+        
+
+        // top line related
+        margin-block-start: 0;
+        padding-block-start: .25em;
+        align-self: flex-start;
+
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            border-block-start: .20em solid currentColor;
+            max-inline-size: 12.5em;
+            inline-size: 115%
+        }
+    }
+}
